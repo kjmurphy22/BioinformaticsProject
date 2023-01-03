@@ -2,12 +2,14 @@ package Team;
 
 public abstract class TeamMember {
 
-    protected String role;
+    protected RoleType role;
     protected String name;
+    protected int yearsExperience;
 
-    public TeamMember(String role, String name){
+    public TeamMember(RoleType role, String name, int yearsExperience){
         this.name = name;
         this.role = role;
+        this.yearsExperience = yearsExperience;
     }
 
     public void setName(String name) {
@@ -18,11 +20,19 @@ public abstract class TeamMember {
         return name;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 
-    public String getRole() {
+    public RoleType getRole() {
         return role;
+    }
+
+    public void setYearsExperience(int yearsExperience) {
+        this.yearsExperience = yearsExperience;
+    }
+
+    public int getYearsExperience() {
+        return yearsExperience;
     }
 }

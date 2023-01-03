@@ -19,6 +19,7 @@ public class ReadTeamFile {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String name;
             String role;
+            int yearsExperience;
             HashMap<String, String> team = new HashMap<>();
 
             String line = br.readLine();
@@ -26,9 +27,11 @@ public class ReadTeamFile {
                 StringTokenizer tokenizer = new StringTokenizer(line);
                 role = tokenizer.nextToken();
                 name = tokenizer.nextToken() + " " + tokenizer.nextToken();
+                yearsExperience = Integer.parseInt(tokenizer.nextToken());
                 team.put(name, role);
                 line = br.readLine();
             }
+            System.out.println(team);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
