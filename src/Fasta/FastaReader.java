@@ -17,6 +17,7 @@ public class FastaReader {
     }
 
     public HashMap<String, String> readFile() {
+        System.out.println("Reading fasta file...");
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = br.readLine();
             while (line != null) {
@@ -28,13 +29,7 @@ public class FastaReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("Fasta file read complete.\n");
         return genomes;
-    }
-
-    public static void main(String[] args) {
-        String fileName = "src/hiv_test.fasta";
-        FastaReader fastaInput = new FastaReader(fileName);
-        HashMap<String, String> fastaFile = fastaInput.readFile();
-        System.out.println("Contents of fasta file: " + fastaFile);
     }
 }

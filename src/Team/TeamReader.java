@@ -18,6 +18,7 @@ public class TeamReader {
     }
 
     public ArrayList<TeamMember> createTeam() {
+        System.out.println("Creating team...");
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String name;
             String role;
@@ -57,6 +58,7 @@ public class TeamReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("Finished creating team.\n");
         return team;
     }
 
