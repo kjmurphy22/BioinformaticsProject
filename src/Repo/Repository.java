@@ -18,4 +18,10 @@ public class Repository {
         this.SNPAlignment = SNPAlignment;
         this.userAlignments = userAlignments;
     }
+
+    public Repository(Repository repository) {
+        this.optimalAlignment = repository.optimalAlignment;
+        this.SNPAlignment = repository.SNPAlignment;
+        this.userAlignments = repository.userAlignments;
+    }
 }
