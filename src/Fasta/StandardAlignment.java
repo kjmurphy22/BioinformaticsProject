@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StandardAlignment extends Alignment{
@@ -64,5 +65,15 @@ public class StandardAlignment extends Alignment{
         }
         System.out.println(counter + " genomes removed. This alignment now contains " + genomes.size() + " genomes.\n");
     }
-
+    public ArrayList<String> genomeSearch(String sequence){
+        System.out.println("Searching for sequence hits...");
+        ArrayList<String> hits = new ArrayList<String>();
+        for (String s : getGenomes().keySet()){
+            if (getGenomes().get(s).contains(sequence)){
+                hits.add(s);
+            }
+        }
+        System.out.println(hits.size() + " genomes contain the sequence " + sequence + ".\nThe genomes containing the sequence are " + hits);
+        return hits;
+    }
 }
