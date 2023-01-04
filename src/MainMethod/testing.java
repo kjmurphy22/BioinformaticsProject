@@ -19,7 +19,7 @@ public class testing {
         TeamReader teamInput = new TeamReader(teamFile);
         ArrayList<TeamMember> team = teamInput.createTeam();
 
-        TeamLead lead = (TeamLead) team.get(0);
+        TeamLead teamLead = (TeamLead) team.get(0);
         Bioinformatician bioinformatician1 = (Bioinformatician) team.get(1);
         Bioinformatician bioinformatician2 = (Bioinformatician) team.get(2);
         Bioinformatician bioinformatician3 = (Bioinformatician) team.get(3);
@@ -41,10 +41,9 @@ public class testing {
         userAlignments.put(bioinformatician2, bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, snp, userAlignments);
-        Repository backup = techSupport.backup(repository);
-        techSupport.clearRepository(repository);
-        Repository newRepo = techSupport.restore(backup);
-
+//        Repository backup = techSupport.backup(repository);
+//        techSupport.clearRepository(repository);
+//        Repository newRepo = techSupport.restore(backup);
 
 //        bioinformatician1.getAlignment().computeAlignmentScore("1993.F1.BR.93.93BR020");
 

@@ -1,10 +1,12 @@
 package Interfaces;
 
 import Fasta.StandardAlignment;
+import Repo.Repository;
+import Team.Bioinformatician;
 
 public interface Controls {
 
-    StandardAlignment promote();
+    void promote(StandardAlignment alignment, Repository repository);
 
-    StandardAlignment overwrite();
+    void overwrite(Bioinformatician bioinformatician);
 }

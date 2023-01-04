@@ -1,8 +1,10 @@
 package Team;
 
+import Fasta.OptimalAlignment;
 import Fasta.StandardAlignment;
 import Interfaces.Controls;
 import Interfaces.Writable;
+import Repo.Repository;
 
 public class TeamLead extends TeamMember implements Writable, Controls {
 
@@ -21,12 +23,15 @@ public class TeamLead extends TeamMember implements Writable, Controls {
     }
 
     @Override
-    public StandardAlignment promote() {
-        return null;
+    public void promote(StandardAlignment alignment, Repository repository) {
+        System.out.println("Promoting " + alignment.getUser().getName() + "'s alignment to the optimal alignment.");
+        OptimalAlignment newOptimalAlignment = new OptimalAlignment(alignment.getGenomes());
+        repository.setOptimalAlignment(newOptimalAlignment);
+        System.out.println("New optimal alignment set.");
     }
 
     @Override
-    public StandardAlignment overwrite() {
-        return null;
+    public void overwrite(Bioinformatician bioinformatician) {
+
     }
 }
