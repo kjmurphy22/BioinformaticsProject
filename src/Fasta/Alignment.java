@@ -5,6 +5,7 @@ import java.util.HashMap;
 public abstract class Alignment {
 
     protected HashMap<String, String> genomes;
+    protected int score;
 
     public Alignment(HashMap<String, String> genomes){
         this.genomes = genomes;
@@ -14,12 +15,20 @@ public abstract class Alignment {
         this.genomes = genomes;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
     public HashMap<String, String> getGenomes() {
         return genomes;
     }
 
-    public int computeAlignmentScore(){
+    public void computeAlignmentScore(){
         int score = 123456;
-        return score;
+        setScore(score);
     }
 }

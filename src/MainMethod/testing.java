@@ -5,7 +5,6 @@ import Fasta.OptimalAlignment;
 import Fasta.StandardAlignment;
 import Team.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,11 +28,19 @@ public class testing {
 
         OptimalAlignment optimal = new OptimalAlignment(genomes);
         StandardAlignment alignment1 = new StandardAlignment(genomes, bioinformatician1);
+        StandardAlignment alignment2 = new StandardAlignment(genomes, bioinformatician2);
+
         bioinformatician1.setAlignment(alignment1);
+
+//
 //        alignment1.removeGenome("1990.U.CD.90.90CD121E12");
 //        alignment1.addGenome("test_genomes.fasta");
 //        alignment1.removeGenomeList("test_genomes_remove.txt");
 //        ArrayList<String> hits = alignment1.genomeSearch("GTCCTGGGG");
-
+        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
+        bioinformatician1.getAlignment().computeAlignmentScore();
+        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
+//        bioinformatician1.writeAlignment();
+        bioinformatician1.writeScore();
     }
 }

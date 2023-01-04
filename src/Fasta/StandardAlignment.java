@@ -24,6 +24,7 @@ public class StandardAlignment extends Alignment{
     public Bioinformatician getUser() {
         return user;
     }
+
     public void addGenome(String fileName){
         String toAdd = "src/" + fileName;
         int counter = 0;
@@ -42,11 +43,13 @@ public class StandardAlignment extends Alignment{
         }
         System.out.println(counter + " new genomes added. This alignment now contains " + genomes.size() + " genomes.\n");
     }
+
     public void removeGenome(String name){
         System.out.println("Removing genome " + name + " from the alignment.");
         genomes.remove(name);
         System.out.println(name + " genome removed. " + genomes.size() + " genomes remaining.\n");
     }
+
     public void removeGenomeList(String fileName){
         String toRemove = "src/" + fileName;
         int counter = 0;
@@ -65,6 +68,7 @@ public class StandardAlignment extends Alignment{
         }
         System.out.println(counter + " genomes removed. This alignment now contains " + genomes.size() + " genomes.\n");
     }
+
     public ArrayList<String> genomeSearch(String sequence){
         System.out.println("Searching for sequence hits...");
         ArrayList<String> hits = new ArrayList<String>();
