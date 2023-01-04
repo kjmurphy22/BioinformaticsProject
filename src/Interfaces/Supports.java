@@ -4,9 +4,9 @@ import Repo.Repository;
 
 public interface Supports {
 
-    Repository backup();
+    Repository backup(Repository repository);
 
-    Repository restore();
+    Repository restore(Repository repository);
 
-    void clearRepository();
+    void clearRepository(Repository repository);
 }

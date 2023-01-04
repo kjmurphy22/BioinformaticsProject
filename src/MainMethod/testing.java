@@ -4,6 +4,7 @@ import Fasta.FastaReader;
 import Fasta.OptimalAlignment;
 import Fasta.SNPAlignment;
 import Fasta.StandardAlignment;
+import Repo.Repository;
 import Team.*;
 
 import java.util.ArrayList;
@@ -30,12 +31,25 @@ public class testing {
         OptimalAlignment optimal = new OptimalAlignment(genomes);
         SNPAlignment snp = optimal.createSNPAlignment("1993.F1.BR.93.93BR020");
 
-        StandardAlignment alignment1 = new StandardAlignment(genomes, bioinformatician1);
-        StandardAlignment alignment2 = new StandardAlignment(genomes, bioinformatician2);
+        StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1);
+        StandardAlignment standardAlignment2 = new StandardAlignment(optimal, bioinformatician2);
+        bioinformatician1.setAlignment(standardAlignment1);
+        bioinformatician2.setAlignment(standardAlignment2);
 
-        bioinformatician1.setAlignment(alignment1);
-        bioinformatician1.getAlignment().computeAlignmentScore("1993.F1.BR.93.93BR020");
-        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
+        HashMap<Bioinformatician, StandardAlignment> userAlignments = new HashMap<Bioinformatician, StandardAlignment>();
+        userAlignments.put(bioinformatician1, bioinformatician1.getAlignment());
+        userAlignments.put(bioinformatician2, bioinformatician2.getAlignment());
+
+        Repository repository = new Repository(optimal, snp, userAlignments);
+        Repository backup = techSupport.backup(repository);
+        techSupport.clearRepository(repository);
+        Repository newRepo = techSupport.restore(backup);
+
+
+//        bioinformatician1.getAlignment().computeAlignmentScore("1993.F1.BR.93.93BR020");
+
+
+//        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
 //        System.out.println(snp.getGenomes());
 
 //        alignment1.removeGenome("1990.U.CD.90.90CD121E12");

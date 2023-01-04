@@ -7,13 +7,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class StandardAlignment extends Alignment{
 
+    protected Alignment alignment;
     protected Bioinformatician user;
-    public StandardAlignment(HashMap<String, String> genomes, Bioinformatician user){
-        super(genomes);
+
+    public StandardAlignment(OptimalAlignment optimal, Bioinformatician user){
+        super(optimal);
         this.user = user;
     }
 

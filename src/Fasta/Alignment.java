@@ -13,6 +13,10 @@ public abstract class Alignment {
         this.genomes = genomes;
     }
 
+    public Alignment(OptimalAlignment optimal){
+        this.genomes = optimal.getGenomes();
+    }
+
     public void setGenomes(HashMap<String, String> genomes) {
         this.genomes = genomes;
     }
