@@ -2,6 +2,7 @@ package MainMethod;
 
 import Fasta.FastaReader;
 import Fasta.OptimalAlignment;
+import Fasta.SNPAlignment;
 import Fasta.StandardAlignment;
 import Team.*;
 
@@ -32,15 +33,16 @@ public class testing {
 
         bioinformatician1.setAlignment(alignment1);
 
-//
+
 //        alignment1.removeGenome("1990.U.CD.90.90CD121E12");
 //        alignment1.addGenome("test_genomes.fasta");
 //        alignment1.removeGenomeList("test_genomes_remove.txt");
 //        ArrayList<String> hits = alignment1.genomeSearch("GTCCTGGGG");
-        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
-        bioinformatician1.getAlignment().computeAlignmentScore();
-        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
 //        bioinformatician1.writeAlignment();
-        bioinformatician1.writeScore();
+//        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
+//        bioinformatician1.getAlignment().computeAlignmentScore();
+//        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
+//        bioinformatician1.writeScore();
+        SNPAlignment snp = optimal.createSNPAlignment("1993.F1.BR.93.93BR020");
     }
 }

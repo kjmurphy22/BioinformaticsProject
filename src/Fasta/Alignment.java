@@ -15,16 +15,16 @@ public abstract class Alignment {
         this.genomes = genomes;
     }
 
+    public HashMap<String, String> getGenomes() {
+        return genomes;
+    }
+
     public void setScore(int score) {
         this.score = score;
     }
 
     public int getScore() {
         return score;
-    }
-
-    public HashMap<String, String> getGenomes() {
-        return genomes;
     }
 
     public void computeAlignmentScore(){

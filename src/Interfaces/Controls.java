@@ -4,7 +4,7 @@ import Fasta.StandardAlignment;
 
 public interface Controls {
 
-    public StandardAlignment promote();
+    StandardAlignment promote();
 
-    public StandardAlignment overwrite();
+    StandardAlignment overwrite();
 }
