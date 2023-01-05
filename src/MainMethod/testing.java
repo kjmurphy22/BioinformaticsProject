@@ -37,9 +37,9 @@ public class testing {
         bioinformatician1.setAlignment(standardAlignment1);
         bioinformatician2.setAlignment(standardAlignment2);
 
-        HashMap<Bioinformatician, StandardAlignment> userAlignments = new HashMap<Bioinformatician, StandardAlignment>();
-        userAlignments.put(bioinformatician1, bioinformatician1.getAlignment());
-        userAlignments.put(bioinformatician2, bioinformatician2.getAlignment());
+        HashMap<String, StandardAlignment> userAlignments = new HashMap<String, StandardAlignment>();
+        userAlignments.put(bioinformatician1.getName(), bioinformatician1.getAlignment());
+        userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, snp, userAlignments);
 

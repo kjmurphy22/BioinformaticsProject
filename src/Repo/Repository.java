@@ -3,7 +3,6 @@ package Repo;
 import Fasta.OptimalAlignment;
 import Fasta.SNPAlignment;
 import Fasta.StandardAlignment;
-import Team.Bioinformatician;
 
 import java.util.HashMap;
 
@@ -11,9 +10,9 @@ public class Repository {
 
     OptimalAlignment optimalAlignment;
     SNPAlignment SNPAlignment;
-    HashMap<Bioinformatician, StandardAlignment> userAlignments;
+    HashMap<String, StandardAlignment> userAlignments;
 
-    public Repository(OptimalAlignment optimalAlignment, SNPAlignment SNPAlignment, HashMap<Bioinformatician, StandardAlignment> userAlignments){
+    public Repository(OptimalAlignment optimalAlignment, SNPAlignment SNPAlignment, HashMap<String, StandardAlignment> userAlignments){
         System.out.println("Creating repository...");
         this.optimalAlignment = optimalAlignment;
         this.SNPAlignment = SNPAlignment;
@@ -35,19 +34,19 @@ public class Repository {
         return optimalAlignment;
     }
 
-    public void setSNPAlignment(Fasta.SNPAlignment SNPAlignment) {
+    public void setSNPAlignment(SNPAlignment SNPAlignment) {
         this.SNPAlignment = SNPAlignment;
     }
 
-    public Fasta.SNPAlignment getSNPAlignment() {
+    public SNPAlignment getSNPAlignment() {
         return SNPAlignment;
     }
 
-    public void setUserAlignments(HashMap<Bioinformatician, StandardAlignment> userAlignments) {
+    public void setUserAlignments(HashMap<String, StandardAlignment> userAlignments) {
         this.userAlignments = userAlignments;
     }
 
-    public HashMap<Bioinformatician, StandardAlignment> getUserAlignments() {
+    public HashMap<String, StandardAlignment> getUserAlignments() {
         return userAlignments;
     }
 }

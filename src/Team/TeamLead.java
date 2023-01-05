@@ -11,17 +11,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class TeamLead extends TeamMember implements Writable, Controllable {
+public class TeamLead extends TeamMember implements Controllable, Writable {
 
     public TeamLead(String name, int years){
         super(RoleType.TEAMLEAD, name, years);
     }
 
-    public StandardAlignment getUserAlignment(Bioinformatician bioinformatician){
+    public StandardAlignment getLiveUserAlignment(Bioinformatician bioinformatician){
         return  bioinformatician.getAlignment();
     }
 
-    public HashMap<Bioinformatician, StandardAlignment> getAllUserAlignments(Repository repository){
+    public StandardAlignment getRepositoryUserAlignment(String name, Repository repository){
+        return  repository.getUserAlignments().get(name);
+    }
+
+    public HashMap<String, StandardAlignment> getAllUserAlignments(Repository repository){
         return repository.getUserAlignments();
     }
 
@@ -39,10 +43,10 @@ public class TeamLead extends TeamMember implements Writable, Controllable {
         System.out.println("Writing all user alignments to file...");
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".alignment.txt";
-        HashMap<Bioinformatician, StandardAlignment> users = getAllUserAlignments(repository);
+        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
-            for (Bioinformatician b : users.keySet()){
-                bw.write(b.getName() + " alignment");
+            for (String b : users.keySet()){
+                bw.write(b + " alignment");
                 HashMap<String, String> temp = users.get(b).getGenomes();
                 for (String s : temp.keySet()){
                     bw.write("\n>" + s + "\n" + temp.get(s));
@@ -59,10 +63,10 @@ public class TeamLead extends TeamMember implements Writable, Controllable {
         System.out.println("Writing all user scores to file...");
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".score.txt";
-        HashMap<Bioinformatician, StandardAlignment> users = getAllUserAlignments(repository);
+        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
-            for (Bioinformatician b : users.keySet()){
-                String toWrite = b.getName() + " score: " + users.get(b).getScore() + "\n";
+            for (String b : users.keySet()){
+                String toWrite = b + " score: " + users.get(b).getScore() + "\n";
                 bw.write(toWrite);
             }
         } catch (IOException e) {

@@ -1,10 +1,12 @@
 package Team;
 
+import Fasta.StandardAlignment;
 import Interfaces.Supportable;
 import Repo.Repository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 public class TechnicalSupport extends TeamMember implements Supportable {
 
@@ -20,6 +22,10 @@ public class TechnicalSupport extends TeamMember implements Supportable {
 
     public String getLastBackupDateTime() {
         return lastBackupDateTime;
+    }
+
+    public HashMap<String, StandardAlignment> getAllUserAlignments(Repository repository){
+        return repository.getUserAlignments();
     }
 
     @Override
