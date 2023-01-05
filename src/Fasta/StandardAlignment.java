@@ -1,11 +1,18 @@
 package Fasta;
 
+import java.util.HashMap;
+
 public class StandardAlignment extends Alignment{
 
     protected String user;
 
     public StandardAlignment(OptimalAlignment optimal, String user){
         super(optimal);
+        this.user = user;
+    }
+
+    public StandardAlignment(HashMap<String, String> genomes, String user){
+        super(genomes);
         this.user = user;
     }
 

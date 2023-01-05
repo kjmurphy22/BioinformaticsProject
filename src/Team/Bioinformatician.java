@@ -133,13 +133,9 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".alignment.txt";
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
-            getAlignmentGenomes().forEach((k, v) -> {
-                try {
-                    bw.write(">" + k + "\n" + v + "\n");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+            for (String s : getAlignmentGenomes().keySet()){
+                bw.write(">" + s + "\n" + getAlignmentGenomes().get(s) + "\n");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -10,8 +10,6 @@ import Team.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static java.lang.System.identityHashCode;
-
 public class testing {
 
     public static void main(String[] args) {
@@ -44,6 +42,8 @@ public class testing {
         userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, userAlignments);
+
+        bioinformatician1.writeAlignment();
 
 //        teamLead.writeAllAlignments(repository);
 

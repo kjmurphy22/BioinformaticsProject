@@ -18,7 +18,12 @@ public class Repository {
         SNPAlignment snp = optimal.createSNPAlignment("1990.U.CD.90.90CD121E12");
         HashMap<String, StandardAlignment> standardAlignments = new HashMap<String, StandardAlignment>();
         for (String s : userAlignments.keySet()){
-            standardAlignments.put(s, userAlignments.get(s));
+            HashMap<String, String> temp = new HashMap<String, String>();
+            for (String g : userAlignments.get(s).getGenomes().keySet()){
+                temp.put(s, userAlignments.get(s).getGenomes().get(g));
+            }
+            StandardAlignment standardAlignment = new StandardAlignment(temp, s);
+            standardAlignments.put(s, standardAlignment);
         }
         this.optimalAlignment = optimal;
         this.SNPAlignment = snp;

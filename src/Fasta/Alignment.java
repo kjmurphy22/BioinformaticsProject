@@ -10,7 +10,11 @@ public abstract class Alignment {
     protected int score = MAX_VALUE;
 
     public Alignment(HashMap<String, String> genomes){
-        this.genomes = genomes;
+        HashMap<String, String> newGenomes = new HashMap<String, String>();
+        for (String s : genomes.keySet()){
+            newGenomes.put(s, genomes.get(s));
+        }
+        this.genomes = newGenomes;
     }
 
     public Alignment(OptimalAlignment optimal){
