@@ -6,7 +6,7 @@ public interface Editable {
 
     void addGenome(String fileName);
 
-    void replaceGenome();
+    void replaceGenome(String genomeName, String replacementSequence);
 
     void replaceGenomeSequence(String toBeReplaced, String replacement, String genomeName);
 

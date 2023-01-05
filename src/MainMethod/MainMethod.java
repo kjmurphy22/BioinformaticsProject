@@ -56,6 +56,7 @@ public class MainMethod {
 
         Repository repository = new Repository(optimal, userAlignments);
 
+
 //        teamLead.writeAllAlignments(repository);
 
 //        bioinformatician2.replaceAllSequences("TGTCCTGGGGACAGACCAACGCTAAA", "__________TEST____________");
