@@ -2,7 +2,7 @@ package Interfaces;
 
 import Repo.Repository;
 
-public interface Supports {
+public interface Supportable {
 
     Repository backup(Repository repository);
 

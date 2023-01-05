@@ -1,12 +1,12 @@
 package Team;
 
-import Interfaces.Supports;
+import Interfaces.Supportable;
 import Repo.Repository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class TechnicalSupport extends TeamMember implements Supports {
+public class TechnicalSupport extends TeamMember implements Supportable {
 
     protected String lastBackupDateTime = "No existing repository backup.\n";
 

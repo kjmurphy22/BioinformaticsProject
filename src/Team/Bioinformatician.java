@@ -1,13 +1,14 @@
 package Team;
 
 import Fasta.StandardAlignment;
+import Interfaces.Editable;
 import Interfaces.Writable;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Bioinformatician extends TeamMember implements Writable {
+public class Bioinformatician extends TeamMember implements Editable, Writable {
 
     StandardAlignment alignment = null;
 
@@ -27,6 +28,7 @@ public class Bioinformatician extends TeamMember implements Writable {
         return alignment.getGenomes();
     }
 
+    @Override
     public void addGenome(String fileName){
         String toAdd = "src/" + fileName;
         int counter = 0;
@@ -46,12 +48,29 @@ public class Bioinformatician extends TeamMember implements Writable {
         System.out.println(counter + " new genomes added. This alignment now contains " + getAlignmentGenomes().size() + " genomes.\n");
     }
 
+    @Override
+    public void replaceGenome() {
+
+    }
+
+    @Override
+    public void replaceGenomeSequence() {
+
+    }
+
+    @Override
+    public void replaceAllSequences() {
+
+    }
+
+    @Override
     public void removeGenome(String name){
         System.out.println("Removing genome " + name + " from the alignment.");
         getAlignmentGenomes().remove(name);
         System.out.println(name + " genome removed. " + getAlignmentGenomes().size() + " genomes remaining.\n");
     }
 
+    @Override
     public void removeGenomeList(String fileName){
         String toRemove = "src/" + fileName;
         int counter = 0;
@@ -71,6 +90,7 @@ public class Bioinformatician extends TeamMember implements Writable {
         System.out.println(counter + " genomes removed. This alignment now contains " + getAlignmentGenomes().size() + " genomes.\n");
     }
 
+    @Override
     public ArrayList<String> genomeSearch(String sequence){
         System.out.println("Searching for sequence hits...");
         ArrayList<String> hits = new ArrayList<String>();

@@ -2,11 +2,11 @@ package Team;
 
 import Fasta.OptimalAlignment;
 import Fasta.StandardAlignment;
-import Interfaces.Controls;
+import Interfaces.Controllable;
 import Interfaces.Writable;
 import Repo.Repository;
 
-public class TeamLead extends TeamMember implements Writable, Controls {
+public class TeamLead extends TeamMember implements Writable, Controllable {
 
     public  TeamLead(String name, int years){
         super(RoleType.TEAMLEAD, name, years);
