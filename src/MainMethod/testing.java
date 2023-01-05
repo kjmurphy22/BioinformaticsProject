@@ -43,6 +43,8 @@ public class testing {
 
         Repository repository = new Repository(optimal, snp, userAlignments);
 
+        teamLead.writeAllAlignments(repository);
+
 //        bioinformatician2.addGenome("test_genomes.fasta");
 //        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
 //        bioinformatician2.removeGenomeList("test_genomes_remove.txt");

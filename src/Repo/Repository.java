@@ -18,7 +18,7 @@ public class Repository {
         this.optimalAlignment = optimalAlignment;
         this.SNPAlignment = SNPAlignment;
         this.userAlignments = userAlignments;
-        System.out.println("Repository created.");
+        System.out.println("Repository created.\n");
     }
 
     public Repository(Repository repository) {
