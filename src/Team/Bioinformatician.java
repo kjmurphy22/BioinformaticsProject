@@ -29,6 +29,58 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
     }
 
     @Override
+    public ArrayList<String> genomeSearch(String sequence){
+        System.out.println("Searching for sequence hits...");
+        ArrayList<String> hits = new ArrayList<String>();
+        for (String s : getAlignmentGenomes().keySet()){
+            if (getAlignmentGenomes().get(s).contains(sequence)){
+                hits.add(s);
+            }
+        }
+        System.out.println(hits.size() + " genomes contain the sequence " + sequence + ".\nThe genomes containing the sequence are " + hits);
+        return hits;
+    }
+
+    @Override
+    public void replaceGenome() {
+
+    }
+
+    @Override
+    public void replaceGenomeSequence(String toBeReplaced, String replacement, String genomeName) {
+        String genome = getAlignmentGenomes().get(genomeName);
+        if (toBeReplaced.equals(replacement)) {
+            System.out.println("Replacement sequence and sequence to be replaced are the same. Aborting");
+        } else if (!genome.contains(toBeReplaced)) {
+            System.out.println(genomeName + " does not contain " + toBeReplaced + ". Aborting.");
+        } else if (toBeReplaced.length() != replacement.length()){
+            System.out.println("Replacement and sequence to be replaced are different lengths. Aborting.");
+        } else {
+            int n = genome.indexOf(toBeReplaced);
+            String start = genome.substring(0, n);
+            String end = genome.substring(n + toBeReplaced.length());
+            String newSequence = start + replacement + end;
+            getAlignmentGenomes().put(genomeName, newSequence);
+            if (end.contains(toBeReplaced)){
+                replaceGenomeSequence(toBeReplaced, replacement, genomeName);
+            } else {
+                System.out.println("All instances of " + toBeReplaced + " in " + genomeName + " replaced with " + replacement + ".");
+            }
+        }
+    }
+
+    @Override
+    public void replaceAllSequences(String toBeReplaced, String replacement) {
+        for (String s : getAlignmentGenomes().keySet()){
+            if (!getAlignmentGenomes().get(s).contains(toBeReplaced)){
+                System.out.println(s + " does not contain any instances of " + toBeReplaced + ".");
+            } else {
+                replaceGenomeSequence(toBeReplaced, replacement, s);
+            }
+        }
+    }
+
+    @Override
     public void addGenome(String fileName){
         String toAdd = "src/" + fileName;
         int counter = 0;
@@ -46,21 +98,6 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
             throw new RuntimeException(e);
         }
         System.out.println(counter + " new genomes added. This alignment now contains " + getAlignmentGenomes().size() + " genomes.\n");
-    }
-
-    @Override
-    public void replaceGenome() {
-
-    }
-
-    @Override
-    public void replaceGenomeSequence() {
-
-    }
-
-    @Override
-    public void replaceAllSequences() {
-
     }
 
     @Override
@@ -88,19 +125,6 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
             throw new RuntimeException(e);
         }
         System.out.println(counter + " genomes removed. This alignment now contains " + getAlignmentGenomes().size() + " genomes.\n");
-    }
-
-    @Override
-    public ArrayList<String> genomeSearch(String sequence){
-        System.out.println("Searching for sequence hits...");
-        ArrayList<String> hits = new ArrayList<String>();
-        for (String s : getAlignmentGenomes().keySet()){
-            if (getAlignmentGenomes().get(s).contains(sequence)){
-                hits.add(s);
-            }
-        }
-        System.out.println(hits.size() + " genomes contain the sequence " + sequence + ".\nThe genomes containing the sequence are " + hits);
-        return hits;
     }
 
     @Override

@@ -47,15 +47,13 @@ public class testing {
 
 //        teamLead.writeAllAlignments(repository);
 
-        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
-        bioinformatician2.addGenome("test_genomes.fasta");
+//        bioinformatician2.replaceAllSequences("TGTCCTGGGGACAGACCAACGCTAAA", "__________TEST____________");
+//        System.out.println(bioinformatician1.getAlignmentGenomes());
+//        System.out.println(bioinformatician2.getAlignmentGenomes());
 
-        System.out.println(optimal);
-        System.out.println(repository.getOptimalAlignment());
-        System.out.println(identityHashCode(optimal));
-        System.out.println(identityHashCode(repository.getOptimalAlignment()));
-        System.out.println(repository.getUserAlignments().get(bioinformatician1.getName()).getGenomes());
-        System.out.println(repository.getUserAlignments().get(bioinformatician2.getName()).getGenomes());
+//        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
+//        bioinformatician2.addGenome("test_genomes.fasta");
+
 //        bioinformatician2.removeGenomeList("test_genomes_remove.txt");
 //        ArrayList<String> hits = bioinformatician1.genomeSearch("GTCCTGGGG");
 //        System.out.println("Hits for GTCCTGGGG: " + hits+"\n*********");

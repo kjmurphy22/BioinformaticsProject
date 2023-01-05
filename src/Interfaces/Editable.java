@@ -8,9 +8,9 @@ public interface Editable {
 
     void replaceGenome();
 
-    void replaceGenomeSequence();
+    void replaceGenomeSequence(String toBeReplaced, String replacement, String genomeName);
 
-    void replaceAllSequences();
+    void replaceAllSequences(String toBeReplace, String replacement);
 
     void removeGenome(String name);
 
