@@ -14,7 +14,11 @@ public abstract class Alignment {
     }
 
     public Alignment(OptimalAlignment optimal){
-        this.genomes = optimal.getGenomes();
+        HashMap<String, String> genomes = new HashMap<String, String>();
+        for (String s : optimal.getGenomes().keySet()){
+            genomes.put(s, optimal.getGenomes().get(s));
+        }
+        this.genomes = genomes;
     }
 
     public void setGenomes(HashMap<String, String> genomes) {
