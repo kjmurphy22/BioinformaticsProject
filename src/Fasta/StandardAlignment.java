@@ -1,7 +1,5 @@
 package Fasta;
 
-import Team.Bioinformatician;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,18 +9,18 @@ import java.util.ArrayList;
 public class StandardAlignment extends Alignment{
 
     protected Alignment alignment;
-    protected Bioinformatician user;
+    protected String user;
 
-    public StandardAlignment(OptimalAlignment optimal, Bioinformatician user){
+    public StandardAlignment(OptimalAlignment optimal, String user){
         super(optimal);
         this.user = user;
     }
 
-    public void setUser(Bioinformatician user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public Bioinformatician getUser() {
+    public String getUser() {
         return user;
     }
 

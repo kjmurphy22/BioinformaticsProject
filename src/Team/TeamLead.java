@@ -23,15 +23,17 @@ public class TeamLead extends TeamMember implements Writable, Controls {
     }
 
     @Override
-    public void promote(StandardAlignment alignment, Repository repository) {
-        System.out.println("Promoting " + alignment.getUser().getName() + "'s alignment to the optimal alignment.");
-        OptimalAlignment newOptimalAlignment = new OptimalAlignment(alignment.getGenomes());
+    public void promote(Bioinformatician bioinformatician, Repository repository) {
+        System.out.println("Promoting " + bioinformatician.getName() + "'s alignment to optimal alignment...");
+        OptimalAlignment newOptimalAlignment = new OptimalAlignment(bioinformatician.getAlignment().getGenomes());
         repository.setOptimalAlignment(newOptimalAlignment);
         System.out.println("New optimal alignment set.");
     }
 
     @Override
-    public void overwrite(Bioinformatician bioinformatician) {
-
+    public void overwrite(Bioinformatician bioinformatician, Repository repository) {
+        System.out.println("Overwriting " + bioinformatician.getName() + "'s alignment with current optimal alignment...");
+        StandardAlignment newAlignment = new StandardAlignment(repository.getOptimalAlignment(), bioinformatician.getName());
+        bioinformatician.setAlignment(newAlignment);
     }
 }

@@ -10,6 +10,8 @@ import Team.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.lang.System.identityHashCode;
+
 public class testing {
 
     public static void main(String[] args) {
@@ -31,8 +33,8 @@ public class testing {
         OptimalAlignment optimal = new OptimalAlignment(genomes);
         SNPAlignment snp = optimal.createSNPAlignment("1993.F1.BR.93.93BR020");
 
-        StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1);
-        StandardAlignment standardAlignment2 = new StandardAlignment(optimal, bioinformatician2);
+        StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1.getName());
+        StandardAlignment standardAlignment2 = new StandardAlignment(optimal, bioinformatician2.getName());
         bioinformatician1.setAlignment(standardAlignment1);
         bioinformatician2.setAlignment(standardAlignment2);
 
@@ -41,6 +43,31 @@ public class testing {
         userAlignments.put(bioinformatician2, bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, snp, userAlignments);
+
+        System.out.println("*********\n");
+        System.out.println(standardAlignment1.getClass());
+        System.out.println(standardAlignment2.getClass());
+        System.out.println("********\n");
+        System.out.println(bioinformatician1.getAlignment().getGenomes().getClass());
+        System.out.println(bioinformatician2.getAlignment().getGenomes().getClass());
+
+        System.out.println("#########\nHash code 1: " + identityHashCode(bioinformatician1.getAlignment().getGenomes()));
+        System.out.println("Hash code 2: " + identityHashCode(bioinformatician2.getAlignment().getGenomes()));
+
+//        System.out.println("Start: " + standardAlignment1.getGenomes()+"\n*********");
+//        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
+//        System.out.println("********\n");
+//        System.out.println(bioinformatician1.getAlignment().getGenomes());
+//        System.out.println(bioinformatician2.getAlignment().getGenomes());
+//        System.out.println(optimal.getGenomes());
+//        standardAlignment1.addGenome("test_genomes.fasta");
+//        System.out.println("Removing: " + standardAlignment1.getGenomes()+"\n*********");
+//        System.out.println("Adding: " + standardAlignment1.getGenomes()+"\n*********");
+//        standardAlignment1.removeGenomeList("test_genomes_remove.txt");
+//        System.out.println("Removing list: " + standardAlignment1.getGenomes()+"\n*********");
+//        ArrayList<String> hits = standardAlignment1.genomeSearch("GTCCTGGGG");
+//        System.out.println("Hits for GTCCTGGGG: " + hits+"\n*********");
+//        teamLead.overwrite(bioinformatician1, repository);
 //        Repository backup = techSupport.backup(repository);
 //        techSupport.clearRepository(repository);
 //        Repository newRepo = techSupport.restore(backup);
@@ -51,10 +78,6 @@ public class testing {
 //        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
 //        System.out.println(snp.getGenomes());
 
-//        alignment1.removeGenome("1990.U.CD.90.90CD121E12");
-//        alignment1.addGenome("test_genomes.fasta");
-//        alignment1.removeGenomeList("test_genomes_remove.txt");
-//        ArrayList<String> hits = alignment1.genomeSearch("GTCCTGGGG");
 //        bioinformatician1.writeAlignment();
     }
 }
