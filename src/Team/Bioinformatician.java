@@ -43,7 +43,9 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
 
     @Override
     public void replaceGenome(String genomeName, String replacementSequence) {
-        if(getAlignmentGenomes().get(genomeName).length() != replacementSequence.length()){
+        if(getAlignmentGenomes().get(genomeName).equals(replacementSequence)){
+            System.out.println(genomeName + " sequence and replacement sequence are the same. Aborting.\n");
+        } else if (getAlignmentGenomes().get(genomeName).length() != replacementSequence.length()){
             System.out.println("Note: replacement sequence is different length to " + genomeName + " sequence.");
             getAlignmentGenomes().put(genomeName, replacementSequence);
             System.out.println(genomeName + " sequence replaced.\n");

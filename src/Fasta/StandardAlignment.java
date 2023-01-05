@@ -11,8 +11,8 @@ public class StandardAlignment extends Alignment{
         this.user = user;
     }
 
-    public StandardAlignment(HashMap<String, String> genomes, String user){
-        super(genomes);
+    public StandardAlignment(HashMap<String, String> genomes, String referenceGenome, String user){
+        super(genomes, referenceGenome);
         this.user = user;
     }
 

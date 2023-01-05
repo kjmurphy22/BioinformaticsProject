@@ -78,9 +78,11 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
     @Override
     public void promote(Bioinformatician bioinformatician, Repository repository) {
         System.out.println("Promoting " + bioinformatician.getName() + "'s alignment to optimal alignment...");
-        OptimalAlignment newOptimalAlignment = new OptimalAlignment(bioinformatician.getAlignment().getGenomes());
+        OptimalAlignment newOptimalAlignment = new OptimalAlignment(bioinformatician.getAlignment().getGenomes(), bioinformatician.getAlignment().getReferenceGenome());
         repository.setOptimalAlignment(newOptimalAlignment);
-        System.out.println("New optimal alignment set.");
+        System.out.println("New optimal alignment set.\n");
+        repository.setSNPAlignment(newOptimalAlignment.createSNPAlignment());
+        System.out.println("New SNP alignment created.\n");
     }
 
     @Override

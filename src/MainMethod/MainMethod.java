@@ -41,8 +41,8 @@ public class MainMethod {
         FastaReader fastaInput = new FastaReader(fastaFile);
         HashMap<String, String> genomes = fastaInput.readFile();
 
-        OptimalAlignment optimal = new OptimalAlignment(genomes);
-        SNPAlignment snp = optimal.createSNPAlignment(referenceGenome);
+        OptimalAlignment optimal = new OptimalAlignment(genomes, referenceGenome);
+        SNPAlignment snp = optimal.createSNPAlignment();
 
         StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1.getName());
         StandardAlignment standardAlignment2 = new StandardAlignment(optimal, bioinformatician2.getName());
@@ -55,6 +55,18 @@ public class MainMethod {
         userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, userAlignments);
+        Repository backup = techSupport.backup(repository);
+
+//        bioinformatician1.getAlignment().setReferenceGenome("1993.F1.BR.93.93BR020");
+//        bioinformatician1.replaceGenome(bioinformatician1.getAlignment().getReferenceGenome(),"TGTCCTGGGGACAG");
+//
+//        teamLead.promote(bioinformatician1, repository);
+
+//        bioinformatician1.getAlignment().computeAlignmentScore(referenceGenome);
+//
+//        teamLead.promote(bioinformatician1, repository);
+//
+//        teamLead.promote(bioinformatician1, repository);
 
 
 //        teamLead.writeAllAlignments(repository);

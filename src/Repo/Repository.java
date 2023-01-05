@@ -13,16 +13,16 @@ public class Repository {
     HashMap<String, StandardAlignment> userAlignments;
 
     public Repository(OptimalAlignment optimalAlignment, HashMap<String, StandardAlignment> userAlignments){
-        System.out.println("Creating repository...");
-        OptimalAlignment optimal = new OptimalAlignment(optimalAlignment.getGenomes());
-        SNPAlignment snp = optimal.createSNPAlignment("1990.U.CD.90.90CD121E12");
+        System.out.println("Creating repository...\n");
+        OptimalAlignment optimal = new OptimalAlignment(optimalAlignment.getGenomes(), optimalAlignment.getReferenceGenome());
+        SNPAlignment snp = optimal.createSNPAlignment();
         HashMap<String, StandardAlignment> standardAlignments = new HashMap<String, StandardAlignment>();
         for (String s : userAlignments.keySet()){
             HashMap<String, String> temp = new HashMap<String, String>();
             for (String g : userAlignments.get(s).getGenomes().keySet()){
                 temp.put(s, userAlignments.get(s).getGenomes().get(g));
             }
-            StandardAlignment standardAlignment = new StandardAlignment(temp, s);
+            StandardAlignment standardAlignment = new StandardAlignment(temp, userAlignments.get(s).getReferenceGenome(), s);
             standardAlignments.put(s, standardAlignment);
         }
         this.optimalAlignment = optimal;
