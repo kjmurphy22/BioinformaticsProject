@@ -28,6 +28,7 @@ public class OptimalAlignment extends Alignment {
         }
         snp.put(referenceGenome, referenceSequence);
         SNPAlignment SNPAlignment = new SNPAlignment(snp, referenceGenome);
+        SNPAlignment.setScore(this.score);
         System.out.println("New SNP alignment created using " + referenceGenome + " as reference.\n");
         return SNPAlignment;
     }

@@ -2,12 +2,10 @@ package Fasta;
 
 import java.util.HashMap;
 
-import static java.lang.Integer.MAX_VALUE;
-
 public abstract class Alignment {
 
     protected HashMap<String, String> genomes;
-    protected int score = MAX_VALUE;
+    protected int score = 0;
 
     public Alignment(HashMap<String, String> genomes){
         HashMap<String, String> newGenomes = new HashMap<String, String>();
