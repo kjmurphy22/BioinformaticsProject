@@ -10,6 +10,8 @@ import Team.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.lang.System.identityHashCode;
+
 public class testing {
 
     public static void main(String[] args) {
@@ -41,12 +43,19 @@ public class testing {
         userAlignments.put(bioinformatician1.getName(), bioinformatician1.getAlignment());
         userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
-        Repository repository = new Repository(optimal, snp, userAlignments);
+        Repository repository = new Repository(optimal, userAlignments);
 
-        teamLead.writeAllAlignments(repository);
+//        teamLead.writeAllAlignments(repository);
 
-//        bioinformatician2.addGenome("test_genomes.fasta");
-//        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
+        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
+        bioinformatician2.addGenome("test_genomes.fasta");
+
+        System.out.println(optimal);
+        System.out.println(repository.getOptimalAlignment());
+        System.out.println(identityHashCode(optimal));
+        System.out.println(identityHashCode(repository.getOptimalAlignment()));
+        System.out.println(repository.getUserAlignments().get(bioinformatician1.getName()).getGenomes());
+        System.out.println(repository.getUserAlignments().get(bioinformatician2.getName()).getGenomes());
 //        bioinformatician2.removeGenomeList("test_genomes_remove.txt");
 //        ArrayList<String> hits = bioinformatician1.genomeSearch("GTCCTGGGG");
 //        System.out.println("Hits for GTCCTGGGG: " + hits+"\n*********");

@@ -12,18 +12,25 @@ public class Repository {
     SNPAlignment SNPAlignment;
     HashMap<String, StandardAlignment> userAlignments;
 
-    public Repository(OptimalAlignment optimalAlignment, SNPAlignment SNPAlignment, HashMap<String, StandardAlignment> userAlignments){
+    public Repository(OptimalAlignment optimalAlignment, HashMap<String, StandardAlignment> userAlignments){
         System.out.println("Creating repository...");
-        this.optimalAlignment = optimalAlignment;
-        this.SNPAlignment = SNPAlignment;
-        this.userAlignments = userAlignments;
+        OptimalAlignment optimal = new OptimalAlignment(optimalAlignment.getGenomes());
+        SNPAlignment snp = optimal.createSNPAlignment("1990.U.CD.90.90CD121E12");
+        HashMap<String, StandardAlignment> standardAlignments = new HashMap<String, StandardAlignment>();
+        for (String s : userAlignments.keySet()){
+            standardAlignments.put(s, userAlignments.get(s));
+        }
+        this.optimalAlignment = optimal;
+        this.SNPAlignment = snp;
+        this.userAlignments = standardAlignments;
         System.out.println("Repository created.\n");
     }
 
     public Repository(Repository repository) {
-        this.optimalAlignment = repository.getOptimalAlignment();
-        this.SNPAlignment = repository.getSNPAlignment();
-        this.userAlignments = repository.getUserAlignments();
+        Repository repo = new Repository(repository.getOptimalAlignment(), repository.getUserAlignments());
+        this.optimalAlignment = repo.getOptimalAlignment();
+        this.SNPAlignment = repo.getSNPAlignment();
+        this.userAlignments = repo.getUserAlignments();
     }
 
     public void setOptimalAlignment(OptimalAlignment optimalAlignment) {
