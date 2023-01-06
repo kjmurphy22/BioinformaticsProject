@@ -19,7 +19,8 @@ public class TechnicalSupport extends TeamMember implements Supportable {
 
     private static int numberOfTechnicalSupports = 0;
 
-    static {
+    /* Increments every time a TechnicalSupport object is created */
+    {
         numberOfTechnicalSupports++;
     }
 

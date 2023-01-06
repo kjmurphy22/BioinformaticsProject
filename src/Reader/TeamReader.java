@@ -48,6 +48,7 @@ public class TeamReader implements Readable {
     fileName.
     */
     public ArrayList<TeamMember> createTeam() {
+        /* Check file extension before trying to read. Returns null if extension is not .txt */
         if (!checkExtension()){
             System.out.println("File does not have .txt extension. Aborting read process.");
             return null;
@@ -74,23 +75,26 @@ public class TeamReader implements Readable {
                 used to create classes based on RoleType and add them to the team variable.
                 */
                 switch (teamRole){
-                    case TEAMLEAD -> {
+                    case TEAMLEAD: {
                         System.out.println("Creating user: " + name + "\nRole: " + role + "\nYears experience: " + yearsExperience);
                         TeamLead leader = new TeamLead(name, yearsExperience);
                         team.add(leader);
                         System.out.println("Finished creating user: " + name +"\n");
+                        break;
                     }
-                    case BIOINFORMATICIAN -> {
+                    case BIOINFORMATICIAN: {
                         System.out.println("Creating user: " + name + "\nRole: " + role + "\nYears experience: " + yearsExperience);
                         Bioinformatician bioinformatician = new Bioinformatician(name, yearsExperience);
                         team.add(bioinformatician);
                         System.out.println("Finished creating user: " + name +"\n");
+                        break;
                     }
-                    case TECHNICALSUPPORT -> {
+                    case TECHNICALSUPPORT: {
                         System.out.println("Creating user: " + name + "\nRole: " + role + "\nYears experience: " + yearsExperience);
                         TechnicalSupport tech = new TechnicalSupport(name, yearsExperience);
                         team.add(tech);
                         System.out.println("Finished creating user: " + name +"\n");
+                        break;
                     }
                 }
                 /* After the class for the line has been made, go to next line */

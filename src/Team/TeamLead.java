@@ -23,7 +23,8 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
 
     private static int numberOfTeamLeads = 0;
 
-    static {
+    /* Increments every time a TeamLead object is created */
+    {
         numberOfTeamLeads++;
     }
 

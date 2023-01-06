@@ -39,7 +39,7 @@ public class FastaReader implements Readable {
     line by line and puts the genome name and sequence in the genomes HashMap variable.
     */
     public HashMap<String, String> readFile() {
-        /* Check file extension before trying to read. Returns null if extension is not .fasta. */
+        /* Check file extension before trying to read. Returns null if extension is not .fasta */
         if (!checkExtension()){
             System.out.println("File does not have .fasta extension. Aborting read process.");
             return null;
