@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 public class Repository {
 
-    OptimalAlignment optimalAlignment;
-    SNPAlignment SNPAlignment;
-    HashMap<String, StandardAlignment> userAlignments;
+    private OptimalAlignment optimalAlignment;
+    private SNPAlignment SNPAlignment;
+    private HashMap<String, StandardAlignment> userAlignments;
 
     public Repository(OptimalAlignment optimalAlignment, HashMap<String, StandardAlignment> userAlignments){
         System.out.println("Creating repository...\n");

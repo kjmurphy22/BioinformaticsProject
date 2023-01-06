@@ -28,11 +28,15 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
     }
 
     public StandardAlignment getLiveUserAlignment(Bioinformatician bioinformatician){
-        return  bioinformatician.getAlignment();
+        return bioinformatician.getAlignment();
+    }
+
+    public String getStandardAlignmentOwner(StandardAlignment standardAlignment){
+        return standardAlignment.getUser();
     }
 
     public StandardAlignment getRepositoryUserAlignment(String name, Repository repository){
-        return  repository.getUserAlignments().get(name);
+        return repository.getUserAlignments().get(name);
     }
 
     public HashMap<String, StandardAlignment> getAllUserAlignments(Repository repository){

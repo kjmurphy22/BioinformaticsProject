@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 public abstract class Alignment {
 
-    protected HashMap<String, String> genomes;
-    protected String referenceGenome;
-    protected int score = 0;
+    private HashMap<String, String> genomes;
+    private String referenceGenome;
+    private int score = 0;
 
     public Alignment(HashMap<String, String> genomes, String referenceGenome){
         HashMap<String, String> newGenomes = new HashMap<String, String>();
@@ -18,11 +18,11 @@ public abstract class Alignment {
     }
 
     public Alignment(OptimalAlignment optimal){
-        HashMap<String, String> genomes = new HashMap<String, String>();
+        HashMap<String, String> newGenomes = new HashMap<String, String>();
         for (String s : optimal.getGenomes().keySet()){
-            genomes.put(s, optimal.getGenomes().get(s));
+            newGenomes.put(s, optimal.getGenomes().get(s));
         }
-        this.genomes = genomes;
+        this.genomes = newGenomes;
         this.referenceGenome = optimal.getReferenceGenome();
         this.score = optimal.getScore();
     }

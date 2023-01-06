@@ -59,7 +59,9 @@ public class MainMethod {
         Repository repository = new Repository(optimal, userAlignments);
         Repository backup = techSupport.backup(repository);
 
-//        bioinformatician1.getAlignment().setReferenceGenome("1993.F1.BR.93.93BR020");
+        System.out.println(bioinformatician1.getAlignmentGenomes());
+        bioinformatician1.replaceGenomeSequence("TTTCCTGCGGACAG", "TTTCCT________", referenceGenome);
+
 //        bioinformatician1.replaceGenome(bioinformatician1.getAlignment().getReferenceGenome(),"TGTCCTGGGGACAG");
 //
 //        teamLead.promote(bioinformatician1, repository);

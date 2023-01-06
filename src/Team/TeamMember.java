@@ -2,9 +2,9 @@ package Team;
 
 public abstract class TeamMember {
 
-    protected RoleType role;
-    protected String name;
-    protected int yearsExperience;
+    private RoleType role;
+    private String name;
+    private int yearsExperience;
 
     public TeamMember(RoleType role, String name, int yearsExperience){
         this.name = name;

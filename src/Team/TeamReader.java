@@ -13,9 +13,10 @@ import static Team.TechnicalSupport.getNumberOfTechnicalSupports;
 
 public class TeamReader {
 
-    String fileName;
+    private String fileName;
 
-    ArrayList<TeamMember> team;
+    private ArrayList<TeamMember> team;
+
     public TeamReader(String fileName){
         this.fileName = fileName;
         this.team = new ArrayList<TeamMember>();

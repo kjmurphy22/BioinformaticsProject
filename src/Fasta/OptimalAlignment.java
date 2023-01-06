@@ -7,7 +7,7 @@ public class OptimalAlignment extends Alignment {
     public OptimalAlignment(HashMap<String, String> genomes, String referenceGenome){
         super(genomes, referenceGenome);
         System.out.println("Creating optimal alignment...");
-        this.score = computeAlignmentScore(referenceGenome);
+        setScore();
         System.out.println("New optimal alignment created.\n");
     }
 

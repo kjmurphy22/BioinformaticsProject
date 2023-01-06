@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 public class FastaReader {
 
-    String fileName;
-    HashMap<String, String> genomes;
+    private String fileName;
+    private HashMap<String, String> genomes;
 
     public FastaReader(String fileName) {
         this.fileName = fileName;

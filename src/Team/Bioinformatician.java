@@ -16,7 +16,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         numberOfBioinformaticians++;
     }
 
-    StandardAlignment alignment = null;
+    private StandardAlignment alignment = null;
 
     public Bioinformatician(String name, int years) {
         super(RoleType.BIOINFORMATICIAN, name, years);
@@ -47,7 +47,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
                 hits.add(s);
             }
         }
-        System.out.println(hits.size() + " genomes contain the sequence " + sequence + ".\nThe genomes containing the sequence are " + hits);
+        System.out.println(hits.size() + " genomes contain the target sequence. The genomes containing the sequence are " + hits);
         return hits;
     }
 
@@ -71,7 +71,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         if (toBeReplaced.equals(replacement)) {
             System.out.println("Replacement sequence and sequence to be replaced are the same. Aborting");
         } else if (!genome.contains(toBeReplaced)) {
-            System.out.println(genomeName + " does not contain " + toBeReplaced + ". Aborting.");
+            System.out.println(genomeName + " does not contain target sequence. Aborting.");
         } else if (toBeReplaced.length() != replacement.length()){
             System.out.println("Replacement and sequence to be replaced are different lengths. Aborting.");
         } else {
@@ -83,7 +83,8 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
             if (end.contains(toBeReplaced)){
                 replaceGenomeSequence(toBeReplaced, replacement, genomeName);
             } else {
-                System.out.println("All instances of " + toBeReplaced + " in " + genomeName + " replaced with " + replacement + ".");
+                System.out.println("All instances of target sequence in " +
+                        genomeName + " replaced.");
             }
         }
     }
@@ -92,7 +93,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
     public void replaceAllSequences(String toBeReplaced, String replacement) {
         for (String s : getAlignmentGenomes().keySet()){
             if (!getAlignmentGenomes().get(s).contains(toBeReplaced)){
-                System.out.println(s + " does not contain any instances of " + toBeReplaced + ".");
+                System.out.println(s + " does not contain any instances of target sequence.");
             } else {
                 replaceGenomeSequence(toBeReplaced, replacement, s);
             }

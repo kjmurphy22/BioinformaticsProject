@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class StandardAlignment extends Alignment{
 
-    protected String user;
+    private String user;
 
     public StandardAlignment(OptimalAlignment optimal, String user){
         super(optimal);
