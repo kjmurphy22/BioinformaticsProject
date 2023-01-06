@@ -1,9 +1,9 @@
 package MainMethod;
 
-import Fasta.FastaReader;
+import Reader.FastaReader;
 import Fasta.OptimalAlignment;
-import Fasta.SNPAlignment;
 import Fasta.StandardAlignment;
+import Reader.TeamReader;
 import Repo.Repository;
 import Team.*;
 
@@ -41,10 +41,11 @@ public class MainMethod {
         }
 
         FastaReader fastaInput = new FastaReader(fastaFile);
+
         HashMap<String, String> genomes = fastaInput.readFile();
 
         OptimalAlignment optimal = new OptimalAlignment(genomes, referenceGenome);
-        SNPAlignment snp = optimal.createSNPAlignment();
+//        SNPAlignment snp = optimal.createSNPAlignment();
 
         StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1.getName());
         StandardAlignment standardAlignment2 = new StandardAlignment(optimal, bioinformatician2.getName());
@@ -53,14 +54,16 @@ public class MainMethod {
         bioinformatician2.setAlignment(standardAlignment2);
 
         HashMap<String, StandardAlignment> userAlignments = new HashMap<String, StandardAlignment>();
+        teamLead.setAssignedBioinformaticans(userAlignments);
+
         userAlignments.put(bioinformatician1.getName(), bioinformatician1.getAlignment());
         userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
-        Repository repository = new Repository(optimal, userAlignments);
-        Repository backup = techSupport.backup(repository);
+        Repository repository = new Repository(optimal, teamLead.getAssignedBioinformaticians());
 
-        System.out.println(bioinformatician1.getAlignmentGenomes());
-        bioinformatician1.replaceGenomeSequence("TTTCCTGCGGACAG", "TTTCCT________", referenceGenome);
+//        Repository backup = techSupport.backup(repository);
+
+//        bioinformatician1.replaceGenomeSequence("TTTCCTGCGGACAG", "TTTCCT________", referenceGenome);
 
 //        bioinformatician1.replaceGenome(bioinformatician1.getAlignment().getReferenceGenome(),"TGTCCTGGGGACAG");
 //

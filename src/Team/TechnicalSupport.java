@@ -12,7 +12,7 @@ public class TechnicalSupport extends TeamMember implements Supportable {
 
     private static int numberOfTechnicalSupports = 0;
 
-    {
+    static {
         numberOfTechnicalSupports++;
     }
 

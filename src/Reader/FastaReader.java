@@ -1,4 +1,4 @@
-package Fasta;
+package Reader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 public class FastaReader {
 
-    private String fileName;
-    private HashMap<String, String> genomes;
+    private final String fileName;
+    private final HashMap<String, String> genomes;
 
     public FastaReader(String fileName) {
         this.fileName = fileName;

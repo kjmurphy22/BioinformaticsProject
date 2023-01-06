@@ -15,9 +15,11 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
 
     private static int numberOfTeamLeads = 0;
 
-    {
+    static {
         numberOfTeamLeads++;
     }
+
+    private HashMap<String, StandardAlignment> assignedBioinformaticans;
 
     public TeamLead(String name, int years){
         super(RoleType.TEAMLEAD, name, years);
@@ -27,37 +29,36 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         return numberOfTeamLeads;
     }
 
-    public StandardAlignment getLiveUserAlignment(Bioinformatician bioinformatician){
-        return bioinformatician.getAlignment();
+    public void setAssignedBioinformaticans(HashMap<String, StandardAlignment> assignedBioinformaticans) {
+        this.assignedBioinformaticans = assignedBioinformaticans;
     }
 
-    public String getStandardAlignmentOwner(StandardAlignment standardAlignment){
+    public HashMap<String, StandardAlignment> getAssignedBioinformaticians() {
+        return assignedBioinformaticans;
+    }
+
+    public StandardAlignment getCurrentUserStandardAlignment(String userName){
+        return getAssignedBioinformaticians().get(userName);
+    }
+
+    public String getCurrentStandardAlignmentOwner(StandardAlignment standardAlignment){
         return standardAlignment.getUser();
     }
 
-    public StandardAlignment getRepositoryUserAlignment(String name, Repository repository){
+    public StandardAlignment getRepositoryUserStandardAlignment(String name, Repository repository){
         return repository.getUserAlignments().get(name);
     }
 
-    public HashMap<String, StandardAlignment> getAllUserAlignments(Repository repository){
+    public HashMap<String, StandardAlignment> getAllRepositoryUserStandardAlignments(Repository repository){
         return repository.getUserAlignments();
     }
 
     @Override
     public void writeAlignment() {
-        System.out.println("Team Lead has no alignment to write.");
-    }
-
-    @Override
-    public void writeScore() {
-        System.out.println("Team Lead has no score to write.");
-    }
-
-    public void writeAllAlignments(Repository repository) {
         System.out.println("Writing all user alignments to file...");
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".alignment.txt";
-        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
+        HashMap<String, StandardAlignment> users = getAssignedBioinformaticians();
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
             for (String b : users.keySet()){
                 bw.write(b + " alignment");
@@ -70,14 +71,14 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("User alignments written to file: " + fileName);
-    }
+        System.out.println("User alignments written to file: " + fileName);    }
 
-    public void writeAllScores(Repository repository) {
+    @Override
+    public void writeScore() {
         System.out.println("Writing all user scores to file...");
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".score.txt";
-        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
+        HashMap<String, StandardAlignment> users = assignedBioinformaticans;
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
             for (String b : users.keySet()){
                 String toWrite = b + " score: " + users.get(b).getScore() + "\n";
@@ -86,8 +87,43 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("User scores written to file: " + fileName);
-    }
+        System.out.println("User scores written to file: " + fileName);    }
+
+//    public void writeAllAlignments(Repository repository) {
+//        System.out.println("Writing all user alignments to file...");
+//        String fileOwner = getName().replaceAll("\\s","_");
+//        String fileName = "src/" + fileOwner + ".alignment.txt";
+//        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
+//        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
+//            for (String b : users.keySet()){
+//                bw.write(b + " alignment");
+//                HashMap<String, String> temp = users.get(b).getGenomes();
+//                for (String s : temp.keySet()){
+//                    bw.write("\n>" + s + "\n" + temp.get(s));
+//                }
+//                bw.write("\n\n");
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println("User alignments written to file: " + fileName);
+//    }
+//
+//    public void writeAllScores(Repository repository) {
+//        System.out.println("Writing all user scores to file...");
+//        String fileOwner = getName().replaceAll("\\s","_");
+//        String fileName = "src/" + fileOwner + ".score.txt";
+//        HashMap<String, StandardAlignment> users = getAllUserAlignments(repository);
+//        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
+//            for (String b : users.keySet()){
+//                String toWrite = b + " score: " + users.get(b).getScore() + "\n";
+//                bw.write(toWrite);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println("User scores written to file: " + fileName);
+//    }
 
     @Override
     public void promote(Bioinformatician bioinformatician, Repository repository) {

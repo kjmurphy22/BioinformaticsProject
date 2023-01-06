@@ -12,7 +12,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
 
     private static int numberOfBioinformaticians = 0;
 
-    {
+    static {
         numberOfBioinformaticians++;
     }
 

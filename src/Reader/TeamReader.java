@@ -1,4 +1,6 @@
-package Team;
+package Reader;
+
+import Team.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,9 +15,9 @@ import static Team.TechnicalSupport.getNumberOfTechnicalSupports;
 
 public class TeamReader {
 
-    private String fileName;
+    private final String fileName;
 
-    private ArrayList<TeamMember> team;
+    private final ArrayList<TeamMember> team;
 
     public TeamReader(String fileName){
         this.fileName = fileName;
