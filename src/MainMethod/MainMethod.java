@@ -56,7 +56,7 @@ public class MainMethod {
         OptimalAlignment optimal = new OptimalAlignment(genomes, referenceGenome);
         /* Create initial SNPAlignment object snp from initial optimal alignment */
         SNPAlignment snp = optimal.createSNPAlignment();
-//        System.out.println(snp.getGenomes() + "\n");
+        System.out.println(snp.getGenomes() + "\n");
 
         /* Create a StandardAlignment object for each bioinformatician in the team and assign their name to it */
         StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1.getName());
@@ -132,53 +132,5 @@ public class MainMethod {
 
         /* Overwrite bioinformatician2's alignment with the new repository optimal alignment */
         teamLead.overwrite(bioinformatician2, newRepo);
-
-//        bioinformatician1.addGenome("test_genomes.fasta");
-
-//        bioinformatician1.getAlignment().setReferenceGenome("1989.F1.BR.89.BZ163");
-
-//        bioinformatician1.removeGenomeList("test_genomes_remove.txt");
-
-//        System.out.println(fastaInput.checkExtension());
-
-//        Repository backup = techSupport.backup(repository);
-
-//        bioinformatician1.replaceGenomeSequence("TTTCCTGCGGACAG", "TTTCCT________", referenceGenome);
-
-//        bioinformatician1.replaceGenome(bioinformatician1.getAlignment().getReferenceGenome(),"TGTCCTGGGGACAG");
-//
-//        teamLead.promote(bioinformatician1, repository);
-
-//        bioinformatician1.getAlignment().computeAlignmentScore(referenceGenome);
-//
-//        teamLead.promote(bioinformatician1, repository);
-//
-//        teamLead.promote(bioinformatician1, repository);
-
-
-//        teamLead.writeAllAlignments(repository);
-
-//        bioinformatician2.replaceAllSequences("TGTCCTGGGGACAGACCAACGCTAAA", "__________TEST____________");
-//        System.out.println(bioinformatician1.getAlignmentGenomes());
-//        System.out.println(bioinformatician2.getAlignmentGenomes());
-
-//        bioinformatician1.removeGenome("1990.U.CD.90.90CD121E12");
-//        bioinformatician2.addGenome("test_genomes.fasta");
-
-//        bioinformatician2.removeGenomeList("test_genomes_remove.txt");
-//        ArrayList<String> hits = bioinformatician1.genomeSearch("GTCCTGGGG");
-//        System.out.println("Hits for GTCCTGGGG: " + hits+"\n*********");
-//
-//        bioinformatician1.getAlignment().computeAlignmentScore("1993.F1.BR.93.93BR020");
-//        System.out.println("Score: " + bioinformatician1.getAlignment().getScore());
-//
-//        bioinformatician1.writeAlignment();
-//        bioinformatician1.writeScore();
-//
-//        teamLead.overwrite(bioinformatician1, repository);
-//
-//        Repository backup = techSupport.backup(repository);
-//        techSupport.clearRepository(repository);
-//        Repository restoredRepository = techSupport.restore(backup);
     }
 }
