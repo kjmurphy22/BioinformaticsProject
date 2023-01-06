@@ -19,10 +19,10 @@ public class MainMethod {
     public static void main(String[] args) {
         String teamFile = "src/" + args[0];
         String fastaFile = "src/" + args[1];
-        String referenceGenome;
-
 
         TeamReader teamInput = new TeamReader(teamFile);
+        FastaReader fastaInput = new FastaReader(fastaFile);
+
         ArrayList<TeamMember> team = teamInput.createTeam();
 
         TeamLead teamLead = (TeamLead) team.get(0);
@@ -31,6 +31,7 @@ public class MainMethod {
         Bioinformatician bioinformatician3 = (Bioinformatician) team.get(3);
         TechnicalSupport techSupport = (TechnicalSupport) team.get(4);
 
+        String referenceGenome;
         try (BufferedReader br = new BufferedReader(new FileReader(fastaFile))){
             referenceGenome = br.readLine().substring(1);
             System.out.println("First genome is " + referenceGenome + ". Setting as default reference genome.\n");
@@ -40,10 +41,8 @@ public class MainMethod {
             throw new RuntimeException(e);
         }
 
-        FastaReader fastaInput = new FastaReader(fastaFile);
 
         HashMap<String, String> genomes = fastaInput.readFile();
-
         OptimalAlignment optimal = new OptimalAlignment(genomes, referenceGenome);
 //        SNPAlignment snp = optimal.createSNPAlignment();
 
@@ -60,6 +59,8 @@ public class MainMethod {
         userAlignments.put(bioinformatician2.getName(), bioinformatician2.getAlignment());
 
         Repository repository = new Repository(optimal, teamLead.getAssignedBioinformaticians());
+
+//        System.out.println(fastaInput.checkExtension());
 
 //        Repository backup = techSupport.backup(repository);
 
