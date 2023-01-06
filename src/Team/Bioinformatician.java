@@ -10,10 +10,20 @@ import java.util.HashMap;
 
 public class Bioinformatician extends TeamMember implements Editable, Writable {
 
+    private static int numberOfBioinformaticians = 0;
+
+    {
+        numberOfBioinformaticians++;
+    }
+
     StandardAlignment alignment = null;
 
     public Bioinformatician(String name, int years) {
         super(RoleType.BIOINFORMATICIAN, name, years);
+    }
+
+    public static int getNumberOfBioinformaticians() {
+        return numberOfBioinformaticians;
     }
 
     public void setAlignment(StandardAlignment alignment) {
@@ -111,9 +121,13 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
 
     @Override
     public void removeGenome(String name){
-        System.out.println("Removing genome " + name + " from the alignment.");
-        getAlignmentGenomes().remove(name);
-        System.out.println(name + " genome removed. " + getAlignmentGenomes().size() + " genomes remaining.\n");
+        if (!getAlignment().getReferenceGenome().equals(name)){
+            System.out.println("Removing genome " + name + " from the alignment...");
+            getAlignmentGenomes().remove(name);
+            System.out.println(name + " genome removed. " + getAlignmentGenomes().size() + " genomes remaining.\n");
+        } else {
+            System.out.println(name + " is current reference genome for this alignment. Cannot remove.");
+        }
     }
 
     @Override

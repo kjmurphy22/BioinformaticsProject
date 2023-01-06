@@ -13,8 +13,18 @@ import java.util.HashMap;
 
 public class TeamLead extends TeamMember implements Controllable, Writable {
 
+    private static int numberOfTeamLeads = 0;
+
+    {
+        numberOfTeamLeads++;
+    }
+
     public TeamLead(String name, int years){
         super(RoleType.TEAMLEAD, name, years);
+    }
+
+    public static int getNumberOfTeamLeads() {
+        return numberOfTeamLeads;
     }
 
     public StandardAlignment getLiveUserAlignment(Bioinformatician bioinformatician){

@@ -10,10 +10,20 @@ import java.util.HashMap;
 
 public class TechnicalSupport extends TeamMember implements Supportable {
 
+    private static int numberOfTechnicalSupports = 0;
+
+    {
+        numberOfTechnicalSupports++;
+    }
+
     protected String lastBackupDateTime = "No existing repository backup.\n";
 
     public TechnicalSupport(String name, int years) {
         super(RoleType.TECHNICALSUPPORT, name, years);
+    }
+
+    public static int getNumberOfTechnicalSupports() {
+        return numberOfTechnicalSupports;
     }
 
     public void setLastBackupDateTime(String lastBackupDateTime) {

@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import static Team.Bioinformatician.getNumberOfBioinformaticians;
+import static Team.TeamLead.getNumberOfTeamLeads;
+import static Team.TechnicalSupport.getNumberOfTechnicalSupports;
+
 public class TeamReader {
 
     String fileName;
@@ -18,7 +22,7 @@ public class TeamReader {
     }
 
     public ArrayList<TeamMember> createTeam() {
-        System.out.println("Creating team...");
+        System.out.println("\nCreating team...\n");
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String name;
             String role;
@@ -58,38 +62,11 @@ public class TeamReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Finished creating team.\n");
+        int teamLeads = getNumberOfTeamLeads();
+        int bioinfo = getNumberOfBioinformaticians();
+        int tech = getNumberOfTechnicalSupports();
+        System.out.println("Finished creating team.\nTeam consists of:\n" + teamLeads + " team lead(s)\n" +
+                bioinfo + " bioinformatician(s)\n" + tech + " technical support(s)\n");
         return team;
     }
-
-
-//    public static void main(String[] args) {
-//        String fileName = "src/team.txt";
-//
-//        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
-//            String name;
-//            String role;
-//            int yearsExperience;
-//            HashMap<String, String> team = new HashMap<>();
-//
-//            String line = br.readLine();
-//            while(line != null){
-//                StringTokenizer tokenizer = new StringTokenizer(line);
-//                role = tokenizer.nextToken();
-//                if (role.toUpperCase().equals("BIOINFORMATICIAN")){
-//                    System.out.println(role.toUpperCase());
-//                    System.out.println("HIT");
-//                }
-//                name = tokenizer.nextToken() + " " + tokenizer.nextToken();
-//                yearsExperience = Integer.parseInt(tokenizer.nextToken());
-//                team.put(name, role);
-//                line = br.readLine();
-//            }
-//            System.out.println(team);
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }

@@ -21,13 +21,6 @@ public class MainMethod {
         String fastaFile = "src/" + args[1];
         String referenceGenome;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fastaFile))){
-            referenceGenome = br.readLine().substring(1);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         TeamReader teamInput = new TeamReader(teamFile);
         ArrayList<TeamMember> team = teamInput.createTeam();
@@ -37,6 +30,15 @@ public class MainMethod {
         Bioinformatician bioinformatician2 = (Bioinformatician) team.get(2);
         Bioinformatician bioinformatician3 = (Bioinformatician) team.get(3);
         TechnicalSupport techSupport = (TechnicalSupport) team.get(4);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fastaFile))){
+            referenceGenome = br.readLine().substring(1);
+            System.out.println("First genome is " + referenceGenome + ". Setting as default reference genome.\n");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         FastaReader fastaInput = new FastaReader(fastaFile);
         HashMap<String, String> genomes = fastaInput.readFile();
