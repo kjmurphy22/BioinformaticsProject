@@ -99,7 +99,7 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         StandardAlignment newAlignment = new StandardAlignment(repository.getOptimalAlignment(), bioinformatician.getName());
         /* Set new StandardAlignment object as bioinformatician's StandardAlignment */
         bioinformatician.setAlignment(newAlignment);
-        System.out.println("Alignment overwritten");
+        System.out.println(bioinformatician.getName() + "'s alignment overwritten.\n");
     }
 
     /*

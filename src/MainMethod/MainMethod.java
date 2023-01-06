@@ -119,6 +119,20 @@ public class MainMethod {
         /* Write all current alignment scores to file */
         teamLead.writeScore();
 
+        /* Promote bioinformatician1's alignment to the optimal alignment in the repository */
+        teamLead.promote(bioinformatician1, repository);
+        /* Overwrite bioinformatician2's alignment with the repository optimal alignment */
+        teamLead.overwrite(bioinformatician2, repository);
+
+        /* techSupport clears repository */
+        techSupport.clearRepository(repository);
+
+        /* Create new repository from backup repository */
+        Repository newRepo = techSupport.restore(backup);
+
+        /* Overwrite bioinformatician2's alignment with the new repository optimal alignment */
+        teamLead.overwrite(bioinformatician2, newRepo);
+
 //        bioinformatician1.addGenome("test_genomes.fasta");
 
 //        bioinformatician1.getAlignment().setReferenceGenome("1989.F1.BR.89.BZ163");
