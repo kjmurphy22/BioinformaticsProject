@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 /*
 TeamLead is a concrete class that extends TeamMember and implements the Controllable and Writable interfaces.
-It has one private static variable and one private instance variable.
+It has one private static subclass variable and one private instance subclass variable.
 numberOfTeamLeads counts the number of TeamLead objects created after TeamReader object calls createTeam in MainMethod.
 assignedBioinformaticians is a HashMap<String, StandardAlignment> of bioinformaticians who have been assigned a
 StandardAlignment. This assignment happens in MainMethod.

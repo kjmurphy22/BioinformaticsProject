@@ -54,7 +54,6 @@ public class Repository {
     object. It is used by TechnicalSupport objects to create backups from current repositories and restore
     repositories from backup repositories.
     */
-
     public Repository(Repository repository) {
         Repository repo = new Repository(repository.getOptimalAlignment(), repository.getUserAlignments());
         this.optimalAlignment = repo.getOptimalAlignment();

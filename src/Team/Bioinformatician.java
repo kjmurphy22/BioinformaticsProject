@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /*
 Bioinformatician is a concrete class that extends TeamMember and implements the Editable and Writable interfaces.
-It has one private static variable and one private instance variable.
+It has one private static subclass variable and one private instance subclass variable.
 numberOfBioinformaticians counts the number of Bioinformatician objects created after TeamReader object calls createTeam in MainMethod.
 alignment is a StandardAlignment object that is null upon creation of a Bioinformatician object. It needs to be
 set to a StandardAlignment in MainMethod before a bioinformatician can start working.

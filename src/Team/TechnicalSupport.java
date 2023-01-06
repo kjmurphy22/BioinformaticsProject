@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /*
 TechnicalSupport is a concrete class that extends TeamMember and implements the Supportable interface.
-It has one private static variable and one private instance variable.
+It has one private static subclass variable and one private instance subclass variable.
 numberOfTechnicalSupports counts the number of TechnicalSupport objects created after TeamReader object calls createTeam in MainMethod.
 lastBackupDateTime is a String that stores the date and time of the last backup of the repository.
 */
