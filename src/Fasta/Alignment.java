@@ -78,7 +78,7 @@ public abstract class Alignment {
                 }
             }
         }
-        System.out.println("Alignment score is " + score + ".");
+        System.out.println("Alignment score is " + score + ".\n");
         return score;
     }
 }

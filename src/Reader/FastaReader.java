@@ -27,7 +27,7 @@ public class FastaReader implements Readable {
         this.genomes = new HashMap<String, String>();
     }
 
-    /* Method called in readFile to check if fileName has a .fasta extension */
+    /* Readable method implementation. Called in readFile to check if fileName has a .fasta extension */
     @Override
     public boolean checkExtension(){
         String extension = fileName.substring(fileName.length()-6);

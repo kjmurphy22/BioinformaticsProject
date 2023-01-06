@@ -8,6 +8,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+/*
+TechnicalSupport is a concrete class that extends TeamMember and implements the Supportable interface.
+*/
+
 public class TechnicalSupport extends TeamMember implements Supportable {
 
     private static int numberOfTechnicalSupports = 0;

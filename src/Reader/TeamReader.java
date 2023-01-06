@@ -35,7 +35,7 @@ public class TeamReader implements Readable {
         this.team = new ArrayList<TeamMember>();
     }
 
-    /* Method called in readFile to check if fileName has a .txt extension */
+    /* Readable method implementation. Called in readFile to check if fileName has a .txt extension */
     @Override
     public boolean checkExtension(){
         String extension = fileName.substring(fileName.length()-4);

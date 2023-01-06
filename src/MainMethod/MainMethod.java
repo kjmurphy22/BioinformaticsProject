@@ -60,6 +60,13 @@ public class MainMethod {
 
         Repository repository = new Repository(optimal, teamLead.getAssignedBioinformaticians());
 
+
+        bioinformatician1.addGenome("test_genomes.fasta");
+
+        bioinformatician1.getAlignment().setReferenceGenome("Test_genome_2");
+
+        bioinformatician1.removeGenomeList("test_genomes_remove.txt");
+
 //        System.out.println(fastaInput.checkExtension());
 
 //        Repository backup = techSupport.backup(repository);
