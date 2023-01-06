@@ -71,7 +71,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
             }
         }
         /* hits.size() returns amount of genomes containing the search sequence. */
-        System.out.println(hits.size() + " genomes contain the target sequence. The genomes containing the sequence are " + hits);
+        System.out.println(hits.size() + " genomes contain the target sequence. The genomes containing the sequence are " + hits + ".\n");
         return hits;
     }
 
@@ -146,7 +146,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
                 /* replaceGenomeSequence is called recursively to replace any more instances of the target sequence */
                 replaceGenomeSequence(toBeReplaced, replacement, genomeName);
             } else {
-                System.out.println("All instances of target sequence in " + genomeName + " replaced.");
+                System.out.println("All instances of target sequence in " + genomeName + " replaced.\n");
             }
         }
     }
@@ -161,7 +161,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         for (String s : getAlignmentGenomes().keySet()){
             /* Check if genome s contains the target sequence and print if it does not. */
             if (!getAlignmentGenomes().get(s).contains(toBeReplaced)){
-                System.out.println(s + " does not contain any instances of target sequence.");
+                System.out.println(s + " does not contain any instances of target sequence.\n");
             }
             /* If genome s contains the target sequence, replace call replaceGenomeSequence to replace it. */
             else {
@@ -267,7 +267,7 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Alignment written to file: " + fileName);
+        System.out.println("Alignment written to file: " + fileName + "\n");
     }
 
     /* Writable writeScore implementation. Writes the bioinformatician's score to file. Functions similarly to writeAlignment */
@@ -278,13 +278,13 @@ public class Bioinformatician extends TeamMember implements Editable, Writable {
         String fileOwner = getName().replaceAll("\\s","_");
         String fileName = "src/" + fileOwner + ".score.txt";
         /* Get alignment score */
-        int scoreToWrite = this.getAlignment().getScore();
+        int scoreToWrite = getAlignment().getScore();
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
             /* Write alignment score to file */
-            bw.write(scoreToWrite);
+            bw.write(String.valueOf(scoreToWrite));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Score written to file: " + fileName);
+        System.out.println("Score written to file: " + fileName + "\n");
     }
 }

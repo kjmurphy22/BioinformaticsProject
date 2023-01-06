@@ -101,7 +101,7 @@ public class TeamReader implements Readable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        /* These static methods allow the printing of the number of each role created. */
+        /* These static methods allow the printing of the number of users of each role type created. */
         int teamLeads = getNumberOfTeamLeads();
         int bioinfo = getNumberOfBioinformaticians();
         int tech = getNumberOfTechnicalSupports();

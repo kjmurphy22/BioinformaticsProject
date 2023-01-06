@@ -139,7 +139,7 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("User alignments written to file: " + fileName);
+        System.out.println("User alignments written to file: " + fileName + "\n");
     }
 
     /*
@@ -167,6 +167,6 @@ public class TeamLead extends TeamMember implements Controllable, Writable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("User scores written to file: " + fileName);
+        System.out.println("User scores written to file: " + fileName + "\n");
     }
 }

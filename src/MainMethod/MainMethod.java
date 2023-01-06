@@ -1,5 +1,6 @@
 package MainMethod;
 
+import Fasta.SNPAlignment;
 import Reader.FastaReader;
 import Fasta.OptimalAlignment;
 import Fasta.StandardAlignment;
@@ -51,8 +52,11 @@ public class MainMethod {
 
         /* Call readFile to extract genomes from fastaFile */
         HashMap<String, String> genomes = fastaInput.readFile();
-        /* Create new OptimalAlignment object optimal from genomes*/
+        /* Create initial OptimalAlignment object optimal from genomes*/
         OptimalAlignment optimal = new OptimalAlignment(genomes, referenceGenome);
+        /* Create initial SNPAlignment object snp from initial optimal alignment */
+        SNPAlignment snp = optimal.createSNPAlignment();
+//        System.out.println(snp.getGenomes() + "\n");
 
         /* Create a StandardAlignment object for each bioinformatician in the team and assign their name to it */
         StandardAlignment standardAlignment1 = new StandardAlignment(optimal, bioinformatician1.getName());
@@ -82,9 +86,42 @@ public class MainMethod {
         /* Create backup repository based on initial repository */
         Repository backup = techSupport.backup(repository);
 
+        /* Search for sequence CCGTGT */
+        ArrayList<String> hits = bioinformatician1.genomeSearch("CCGTG");
+
+        /* Remove all genomes containing CCGTGT */
+        for (String s: hits){
+            bioinformatician1.removeGenome(s);
+        }
+
+        /* Replace sequence CCGTGT with CGCGCG in whole alignment */
+        bioinformatician2.replaceAllSequences("CCGTGT", "CGCGCG");
+
+        /* Remove genome 2002.A.CD.02.KTB035 */
+        bioinformatician3.removeGenome("2002.A.CD.02.KTB035");
+
+        /* Write bioinformatician1's alignment to file */
+        bioinformatician1.writeAlignment();
+        /* Compute bioinformatician1's alignment score after above changes */
+        bioinformatician1.getAlignment().setScore();
+        /* Write bioinformatician1's score to file */
+        bioinformatician1.writeScore();
+
+        /* Write bioinformatician2's alignment to file */
+        bioinformatician2.writeAlignment();
+        /* Compute bioinformatician2's alignment score after above changes */
+        bioinformatician2.getAlignment().setScore();
+        /* Write bioinformatician2's score to file */
+        bioinformatician2.writeScore();
+
+        /* Write all current standard alignments to file */
+        teamLead.writeAlignment();
+        /* Write all current alignment scores to file */
+        teamLead.writeScore();
+
 //        bioinformatician1.addGenome("test_genomes.fasta");
 
-        bioinformatician1.getAlignment().setReferenceGenome("1989.F1.BR.89.BZ163");
+//        bioinformatician1.getAlignment().setReferenceGenome("1989.F1.BR.89.BZ163");
 
 //        bioinformatician1.removeGenomeList("test_genomes_remove.txt");
 
